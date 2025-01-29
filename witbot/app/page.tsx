@@ -50,7 +50,8 @@ export default function Home() {
         </div>
         <div className='flex-1 relative overflow-y-auto my-4 md:my-6'>
           <div className='absolute w-full overflow-x-hidden'>
-          {messages.map((message, index) => message ? <Bubble ref={messagesEndRef} key={`message-${index}`} content={message} /> : "Hello. I am WIT AI Assistant.I help you inquiry about WIT, All Product and Solution of WIT, Careers in WIT.")}
+          console.log(messages)
+          {messages.map((message, index) => message ? <Bubble ref={messagesEndRef} key={`message-${index}`} content={message} /> : <Bubble ref={messagesEndRef} key={`message-${index}`} content="Hello. I am WIT AI Assistant.I help you inquiry about WIT, All Product and Solution of WIT, Careers in WIT." />)}
           </div>
         </div>
         <form className='flex h-[40px] gap-2' onSubmit={handleSend}>
