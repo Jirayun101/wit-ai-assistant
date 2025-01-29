@@ -50,8 +50,7 @@ export default function Home() {
         </div>
         <div className='flex-1 relative overflow-y-auto my-4 md:my-6'>
           <div className='absolute w-full overflow-x-hidden'>
-          {messages.map((message, index) => index ? <Bubble ref={messagesEndRef} key={`message-${index}`} content={message} /> : <Bubble ref={messagesEndRef} key={`message-0`} content="Hello. I am WIT AI Assistant.I help you inquiry about WIT, All Product and Solution of WIT, Careers in WIT." />)}
-          </div>
+          {messages.map((message, index) => <Bubble ref={messagesEndRef} key={`message-${index}`} content={message} />)}</div>
         </div>
         <form className='flex h-[40px] gap-2' onSubmit={handleSend}>
           <input onChange={handleInputChange} value={input} className='chatbot-input flex-1 text-sm md:text-base outline-none bg-transparent rounded-md p-2' placeholder='Send a message...' />
