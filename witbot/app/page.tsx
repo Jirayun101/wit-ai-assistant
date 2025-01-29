@@ -50,7 +50,9 @@ export default function Home() {
         </div>
         <div className='flex-1 relative overflow-y-auto my-4 md:my-6'>
           <div className='absolute w-full overflow-x-hidden'>
-          <div class="block mt-4 md:mt-6 pb-[7px] clear-both float-left"><div class="flex justify-end"><div class="talk-bubble p-2 md:p-4"><p>Hello! I am WIT Chat bot.How can I assist you today?</p><svg width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg"></svg></div></div></div>
+          <div className="block mt-4 md:mt-6 pb-[7px] clear-both float-left"><div className="flex justify-end"><div className="talk-bubble p-2 md:p-4"><p>Hello! I am WIT Chat bot.How can I assist you today?</p>
+          <svg width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.730278 0.921112C-3.49587 0.921112 12 0.921112 12 0.921112V5.67376C12 6.8181 9.9396 7.23093 9.31641 6.27116C6.83775 2.45382 3.72507 0.921112 0.730278 0.921112Z"></path></svg>
+          </div></div></div>
           {messages.map((message, index) => <Bubble ref={messagesEndRef} key={`message-${index}`} content={message} />)}</div>
         </div>
         <form className='flex h-[40px] gap-2' onSubmit={handleSend}>
