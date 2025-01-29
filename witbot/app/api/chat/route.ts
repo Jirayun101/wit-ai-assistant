@@ -35,12 +35,17 @@ export async function POST(req: Request) {
       const datatranslated = completiondata.choices[0]?.message?.content;
 
       console.log(datatranslated);
+      var lang = "EN"
+      const nonEnglishChars = datatranslated.match(/[^a-zA-Z0-9\s.,!?;:'"()\[\]{}<>@#$%^&*+=_\-`~]/g); 
+      
+      console.log(nonEnglishChars); 
+      if(nonEnglishChars)lang = "TH"
 
       const {data} = await openai.embeddings.create({input: datatranslated, model: 'text-embedding-ada-002'});
 
       const collection = await astraDb.collection(`wit_chatbot`);
 
-      const cursor= collection.find({ "metadata.lang": "EN" },
+      const cursor= collection.find({ "metadata.lang": lang },
         {
         sort: {
           $vector: data[0]?.embedding,
