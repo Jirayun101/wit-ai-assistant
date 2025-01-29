@@ -40,8 +40,7 @@ export async function POST(req: Request) {
 
       const collection = await astraDb.collection(`wit_chatbot`);
 
-      const cursor= collection.find(null, 
-        { "metadata.lang": "EN" },
+      const cursor= collection.find({ "metadata.lang": "EN" },
         {
         sort: {
           $vector: data[0]?.embedding,
