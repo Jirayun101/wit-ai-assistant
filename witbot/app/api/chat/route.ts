@@ -16,7 +16,7 @@ export async function POST(req: Request) {
 
     let docContext = '';
     if (useRag) {
-      
+      /*
       const translatePrompt = [
         {
           role: 'system',
@@ -31,17 +31,19 @@ export async function POST(req: Request) {
           messages: [...translatePrompt, ...messages],
         }
       );
+      */
 
-      const datatranslated = completiondata.choices[0]?.message?.content;
+      /*const datatranslated = completiondata.choices[0]?.message?.content;*/
+      const completiondata = latestMessage.choices[0]?.message?.content;
 
-      console.log(datatranslated);
-      var lang = "EN"
-      const nonEnglishChars = datatranslated.match(/[^a-zA-Z0-9\s.,!?;:'"()\[\]{}<>@#$%^&*+=_\-`~]/g); 
+      console.log(completiondata);
+      var lang = "EN";
+      const nonEnglishChars = completiondata.match(/[^a-zA-Z0-9\s.,!?;:'"()\[\]{}<>@#$%^&*+=_\-`~]/g); 
       
       console.log(nonEnglishChars); 
-      if(nonEnglishChars)lang = "TH"
+      if(nonEnglishChars)lang = "TH";
 
-      const {data} = await openai.embeddings.create({input: datatranslated, model: 'text-embedding-ada-002'});
+      const {data} = await openai.embeddings.create({input: completiondata, model: 'text-embedding-ada-002'});
 
       const collection = await astraDb.collection(`wit_chatbot`);
 
